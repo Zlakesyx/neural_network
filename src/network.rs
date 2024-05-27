@@ -78,7 +78,7 @@ impl Network {
     pub fn train(&mut self, inputs: Vec<Vec<f64>>, targets: Vec<Vec<f64>>, ephochs: u16) {
         let mut data = TrainingData::new(&inputs, &targets);
         for epoch in 0..=ephochs {
-            if epoch % 100 == 0 {
+            if epoch % 1000 == 0 {
                 println!("Ephoch: {}", epoch);
             }
             for i in 0..data.inputs.len() {

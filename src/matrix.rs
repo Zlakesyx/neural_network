@@ -12,7 +12,7 @@ impl Matrix {
         let mut buffer: Vec<f64> = Vec::with_capacity(rows * cols);
 
         for _ in 0..buffer.capacity() {
-            let num = rand::thread_rng().gen_range(0.0..1.0);
+            let num = rand::thread_rng().gen_range(-1.0..1.0);
             buffer.push(num);
         }
 
