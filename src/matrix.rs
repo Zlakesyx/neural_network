@@ -39,7 +39,7 @@ impl Matrix {
 
     pub fn from_vec(data: &Vec<f64>, rows: usize, cols: usize) -> Self {
         if data.len() != rows * cols {
-            println!("{:?}, {}, {}", data, data.capacity(), rows*cols);
+            println!("{:?}, {}, {}", data, data.capacity(), rows * cols);
             panic!("Vector capacity does not match rows * cols");
         }
 

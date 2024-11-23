@@ -59,7 +59,8 @@ impl Network {
         }
 
         let output_matrix = Matrix::from_vec(&outputs, 1, outputs.len()).transpose();
-        let mut errors = Matrix::from_vec(&targets, 1, targets.len()).transpose()
+        let mut errors = Matrix::from_vec(&targets, 1, targets.len())
+            .transpose()
             .subtract(&output_matrix);
         let mut gradients = output_matrix.map(self.activation.derivative);
 
@@ -98,12 +99,7 @@ fn xor() {
         vec![0.0, 1.0],
         vec![0.0, 0.0],
     ];
-    let targets = vec![
-        vec![0.0],
-        vec![1.0],
-        vec![1.0],
-        vec![0.0],
-    ];
+    let targets = vec![vec![0.0], vec![1.0], vec![1.0], vec![0.0]];
     let mut network = Network::new(vec![2, 3, 1], SIGMOID, 0.5);
 
     // Test pretrained
@@ -116,8 +112,24 @@ fn xor() {
     // Test trained
     network.train(inputs.clone(), targets, 10000);
     println!("Post-Trained");
-    println!("input: {:#?}, result: {:#?}", inputs[0], network.feed_forward(inputs[0].clone()));
-    println!("input: {:#?}, result: {:#?}", inputs[1], network.feed_forward(inputs[1].clone()));
-    println!("input: {:#?}, result: {:#?}", inputs[2], network.feed_forward(inputs[2].clone()));
-    println!("input: {:#?}, result: {:#?}", inputs[3], network.feed_forward(inputs[3].clone()));
+    println!(
+        "input: {:#?}, result: {:#?}",
+        inputs[0],
+        network.feed_forward(inputs[0].clone())
+    );
+    println!(
+        "input: {:#?}, result: {:#?}",
+        inputs[1],
+        network.feed_forward(inputs[1].clone())
+    );
+    println!(
+        "input: {:#?}, result: {:#?}",
+        inputs[2],
+        network.feed_forward(inputs[2].clone())
+    );
+    println!(
+        "input: {:#?}, result: {:#?}",
+        inputs[3],
+        network.feed_forward(inputs[3].clone())
+    );
 }

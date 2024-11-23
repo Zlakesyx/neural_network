@@ -10,7 +10,10 @@ impl TrainingData {
         if inputs.len() != targets.len() {
             panic!("Inputs and target sizes do not match");
         }
-        TrainingData{inputs: inputs.clone(), targets: targets.clone()}
+        TrainingData {
+            inputs: inputs.clone(),
+            targets: targets.clone(),
+        }
     }
 
     pub fn shuffle(&self) -> TrainingData {
@@ -30,7 +33,10 @@ impl TrainingData {
             shuf_targets[rng_idx] = tmp.clone();
         }
 
-        TrainingData {inputs: shuf_inputs, targets: shuf_targets}
+        TrainingData {
+            inputs: shuf_inputs,
+            targets: shuf_targets,
+        }
     }
 }
 
@@ -42,12 +48,7 @@ fn shuffle() {
         vec![0.0, 1.0],
         vec![0.0, 0.0],
     ];
-    let targets = vec![
-        vec![0.0],
-        vec![1.0],
-        vec![1.0],
-        vec![0.0],
-    ];
+    let targets = vec![vec![0.0], vec![1.0], vec![1.0], vec![0.0]];
 
     let training_data = TrainingData::new(&inputs, &targets);
     let shuffled = training_data.shuffle();
